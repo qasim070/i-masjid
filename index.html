@@ -1,0 +1,923 @@
+<html lang="en">
+  <head>
+    <!-- <link rel="icon" href="logo.png" type="image/x-icon" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMasjed</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script src='~/Content/IMasjedContent/Calendar/dist/index.global.js'></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.js"></script>
+
+    <link href="IMasjedStyleSheet.css" rel="stylesheet" />
+    <style>
+
+                /* Style for the radio container */
+                .radio-container {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                    /* Hide the actual radio input */
+                    .radio-container input[type="radio"] {
+                        display: none;
+                    }
+
+                /* Style for the radio button */
+                .radio-button {
+                    display: inline-block;
+                    padding: 5px 20px;
+                    background-color: transparent;
+                    color: white;
+                    border: 2px solid orange;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+                #StartVerseFinal{
+                  margin-top: 70px;
+                  display: flex;
+                  flex-wrap: wrap;
+                  column-gap: 10px;
+                  padding: 30px 90px;
+                  height: 480px;
+                }
+                /* Style for the selected radio button */
+                .radio-container input[type="radio"]:checked + .radio-button {
+                    background-color: orange;
+                    border: 2px solid orange;
+                }
+
+                body {
+                    background-image: url(/Content/IMasjedContent/Images/bg.png);
+                    background-color: #796CA6;
+                    overflow-x: hidden;
+                }
+
+                /* @font-face {
+                    font-family: 'Nunito';
+                    src: url('../../Content/IMasjedContent/font/Nunito-VariableFont_wght.ttf') format('truetype');
+                }
+
+                @font-face {
+                    font-family: 'BubbleGum';
+                    src: url('../../Content/IMasjedContent/font/BubblegumSans-Regular.woff') format('woff');
+                } */
+
+                .notecard h3 {
+                    color: black;
+                    font-family: Nunito;
+                    font-weight: 700;
+                }
+
+                .notecard {
+                    height: auto;
+                }
+
+                #main-content {
+                    /* Define styles for the main content */
+                    transition: all 0.7s;
+                    margin-left: 140px;
+                    margin-top: 50px;
+                }
+
+
+                    #main-content.expanded {
+                        /* Adjust main content styles for expanded sidebar */
+                        margin-left: 300px;
+                        margin-top: 50px;
+                    }
+
+                .gradient {
+                    background-image: linear-gradient(to bottom, #F3F9F9 0%, #EDF6F3 100%, #D0E8D6 100%);
+                }
+
+                .BismillahRow {
+                    padding-left: 8rem;
+                    padding-right: 3.5rem;
+                    margin-top: -20px;
+                }
+
+                .arrow-btn {
+                    position: fixed;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 40px; /* Adjust width as needed */
+                    height: 40px; /* Adjust height as needed */
+                    background-color: darkorange;
+                    border: none;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 24px;
+                    color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .arrow-btn.left {
+                        left: 10%; /* Adjust left position as needed */
+                    }
+
+                    .arrow-btn.right {
+                        right: 10%; /* Adjust right position as needed */
+                    }
+
+
+                /* Styles for the dropdown container */
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                    float: right;
+                }
+
+                /* Styles for the button */
+                .dropdown-btn {
+                    padding: 10px;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                /* Styles for the dropdown content */
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: transparent;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                }
+
+                /* Styles for the dropdown items */
+                .dropdown-item {
+                    padding: 10px;
+                    margin-bottom: 5px;
+                    display: block;
+                    border-radius: 10px;
+                }
+
+
+                .event_card_data {
+                    display: grid;
+                    justify-content: center;
+                    padding: 10px;
+                    margin: 0px;
+                    height: 80%;
+                }
+
+                .event_card {
+                    height: auto;
+                    margin-left: 50px;
+                    width: 100%;
+                    background-color: #6B5A9A;
+                    border-radius: 24px;
+                    color: white;
+                    margin-top: 10px;
+                }
+
+
+
+
+                .topnames {
+                    border: 10px;
+                    z-index: 10;
+                    background-color: #DEDAEC;
+                    height: 50px;
+                    top: 70px;
+                    font-family: auto;
+                    font-size: 18px;
+                    border-radius: 10px 10px 0px 0px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .topnamesMid {
+                    border: 10px;
+                    z-index: 10;
+                    font-family: auto;
+                    background-color: #9BC7D7;
+                    height: 50px;
+                    top: 70px;
+                    font-size: 22px;
+                    border-radius: 10px 10px 0px 0px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+
+                .rounded-start {
+                    border-bottom-left-radius: var(--bs-border-radius) !important;
+                    border-top-left-radius: var(--bs-border-radius) !important;
+                }
+
+                .card-surah-ayah {
+                    color: #333;
+                }
+
+                .SurahBox {
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                }
+
+                .JuzsBox {
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                }
+
+                span {
+                    color: black;
+                }
+
+                .verse {
+                    display: inline;
+                    font-size: 50px;
+                    font-family: auto;
+                }
+
+                /*        .bismillahtext {
+                    border-radius: 20px;
+                    margin-top: 80px;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                }
+        */
+                .bismillahtext {
+                    border-radius: 20px;
+                    margin-top: 80px;
+                    margin-left: 40px;
+                    width: 100%;
+                    margin-right: 40px;
+                }
+
+
+                .shashm {
+                    border-radius: 50%;
+                    height: 40px;
+                    margin-top: 15px;
+                    display: flex;
+                    width: 40px;
+                    font-size: 16px;
+                    justify-content: center;
+                    align-items: center;
+                }
+                /*  #customCursor {
+                    position: absolute;
+                    width: 140px;
+                    height: 55px;
+                    background-color: #34343433;
+                    border-radius: 20px;
+                    pointer-events: none;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                }
+
+                .frame {
+                    padding-top: 60px !important;
+                    text-align: justify;
+                    background: url(/Content/IMasjedContent/border.png);
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                }*/
+                .main-qur{
+                  background-color: #F3F9F9; width: 60%; height: 1750px; border-radius: 20px; padding: 20px;
+                }
+                .bg-div{
+                  background: url(border.png);
+                  background-repeat: no-repeat;
+                  z-index: 6;
+                  background-size: 100% 100%;
+                  height: 95%;
+                }
+
+                @media only screen and (max-width:1024px){
+                  .main-qur{
+                    height: 1240px;
+                  }
+                  #StartVerseFinal{
+                  margin-top: 55px;
+                }
+                  .main-qur{
+                    width: 66%;
+                  }
+                  .verse{
+                    font-size: 34px;
+                  }
+                  .shashm{
+                    margin-top: 0;
+                  }
+                  .bg-div{
+                    background-size: 100% 90%;
+                    height: 100%;
+                    margin-top: 6%;
+                  }
+                }
+                @media only screen and (max-width:992px){
+                  .bg-div{
+                    background-size: 100% 90%;
+                    height: 100%;
+                    margin-top: 6%;
+                  }
+                  .verse {
+                      font-size: 32px;
+                  }
+                  #StartVerseFinal{
+                    margin-top: 45px;
+                    padding: 50px 60px 0;
+                  }
+              }
+                @media only screen and (max-width:850px){
+                  #StartVerseFinal{
+                    margin-top: 45px;
+                    padding: 50px 60px 0;
+                  }
+                  .bg-div{
+                    background-size: 100% 90%;
+                    height: 100%;
+                  }
+                  .verse {
+                      font-size: 28px;
+                  }
+
+                }
+                @media only screen and (max-width:768px){
+                  .main-qur{
+                    width: 75%;
+                    height: 1050px;
+                  }
+                  .bg-div{
+                    background-size: 100% 78%;
+                    height: 100%;
+                  }
+                  .arrow-btn.right{
+                    right: 2%;
+                  }
+                  .arrow-btn.left{
+                    left: 2%;
+                  }
+                  .verse {
+                      font-size: 24px;
+                  }
+                  #StartVerseFinal{
+                    padding: 15px  60px 0;
+                    column-gap: 8px;
+                    margin-top: 8% !important;
+
+                  }
+                  .shashm{
+                    margin: 0 !important;
+                  }
+              }
+              @media only screen and (max-width:694px){
+                .bg-div{
+                    background-size: 100% 78%;
+                    height: 100%;
+                  }
+                  .verse {
+                      font-size: 22px;
+                  }
+                  #StartVerseFinal{
+                    padding: 30px  60px 0;
+                    column-gap: 10px;
+                    margin-top: 8% !important;
+
+                  }
+                  .shashm{
+                   font-size: 12px;
+                  }
+                  .main-qur{
+                    width: 80%;
+                    height: 1050px;
+                  }
+              }
+              @media only screen and (max-width:600px){
+                .bg-div{
+                    background-size: 100% 78%;
+                    height: 100%;
+                  }
+                  .verse {
+                      font-size: 20px;
+                  }
+                  #StartVerseFinal{
+                    padding: 30px  48px 0;
+                    column-gap: 10px;
+                    margin-top: 8% !important;
+
+                  }
+                  .shashm{
+                   font-size: 12px;
+                  }
+              }
+              @media only screen and (max-width:510px){
+                .bg-div{
+                    background-size: 100% 78%;
+                    height: 100%;
+                  }
+                  .verse {
+                      font-size: 18px;
+                  }
+                  #StartVerseFinal{
+                    padding: 45px  48px 0;
+                    column-gap: 10px;
+                    margin-top: 8% !important;
+
+                  }
+                  .shashm{
+                    width: 30px;
+                    height: 30px;
+                   font-size: 10px;
+                  }
+              }
+              @media only screen and (max-width:450px){
+                .bg-div{
+                    background-size: 100% 78%;
+                    height: 100%;
+                  }
+                  .verse {
+                      font-size: 18px;
+                  }
+                  #StartVerseFinal{
+                    padding: 45px  48px 0;
+                    column-gap: 10px;
+                    margin-top: 8% !important;
+
+                  }
+                  .shashm{
+                    width: 25px;
+                    height: 25px;
+                    font-size: 12px;
+                }
+              }
+              @media only screen and (max-width:428px){
+                .arrow-btn{
+                    width: 25px;
+                    height: 25px;
+                    font-size: 12px;
+                }
+                .bg-div{
+                    background-size: 100% 75%;
+                    height: 100%;
+                  }
+                  .verse {
+                      font-size: 17px;
+                  }
+                  #StartVerseFinal{
+                    padding: 35px  30px 0;
+                    column-gap: 10px;
+                    margin-top: 8% !important;
+
+                  }
+                  .shashm{
+                    width: 20px;
+                    height: 20px;
+                    font-size: 10px;
+                }
+                .main-qur{
+                    width: 80%;
+                    height: 920px;
+                  }
+              }
+              @media only screen and (max-width:390px){
+                .bg-div{
+                    background-size: 100% 70%;
+                    height: 100%;
+                  }
+                .verse {
+                    font-size: 14px;
+                }
+                #StartVerseFinal{
+                    padding: 30px  30px 0;
+                    column-gap: 10px;
+                    margin-top: 8% !important;
+                }
+                  .shashm{
+                    width: 17px;
+                    height: 17px;
+                    font-size: 10px;
+                }
+                .main-qur{
+                    width: 82%;
+                    height: 780px;
+                  }
+                .arrow-btn{
+                    width: 25px;
+                    height: 25px;
+                    font-size: 12px;
+                }
+            }
+              @media only screen and (max-width:366px){
+                .bg-div{
+                    background-size: 100% 72%;
+                    height: 100%;
+                  }
+                .verse {
+                    font-size: 12px;
+                }
+               
+                  .shashm{
+                    width: 17px;
+                    height: 17px;
+                    font-size: 10px;
+                }
+              }
+    </style>
+</head>
+
+
+<body class="scroll-1">
+    <div class="row">
+        <div class="col-md-6">
+            <div style="display:flex;justify-content: flex-start;align-items: end;">
+                <div id="img_Expanded">
+                    <img style="cursor:pointer;" class="img-fluid" src="logo.png" />
+                </div>
+                <div id="img_NotExpanded">
+                    <img style="cursor:pointer;" class="img-fluid" src="logo.png" />
+                </div>
+                <h1 style="color:orange;">Read Quran</h1>
+                <input type="hidden" value="247" />
+                <input type="hidden" id="JuzSelectedPage" />
+                <input type="hidden" id="SuratID" />
+
+            </div>
+        </div>
+
+    </div>
+
+    <select id="AllJuz" class="form-control" style="display:none;">
+
+    </select>
+
+
+    <hr style="opacity:1;" />
+    <div class="row" id="SuratDiv" style="direction:rtl;display:flex;justify-content:center;">
+            <button id="ArrowBtnLeft" class="arrow-btn left"><i class="fa fa-left-long"></i> </button>
+            <div class="main-qur row g-2 col-lg-8 col-md-10 col-12 justify-content-center">
+                <div id="FilterRow" class="row">
+                    <div class="col-md-11">
+                        <select class="form-select" id="Surahs">
+                        </select>
+                    </div><div class="col-md-1">
+                        <!-- <i onclick="window.location.href='@Url.Action("Index","Quran")'" style="display: flex; justify-content: center; padding: 5px;" class="fa fa-book-open iMasjed_Action_icons"></i> -->
+                    </div>
+                </div>
+                <div class="row" style="display:flex;justify-content:center;margin-top:15px;">
+
+                    <div class="col-md-3 topnames" id="ParaNameandNumber" ></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2 topnamesMid" id="PageNumber"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3 topnames" id="SurahNameAndNumber"></div>
+                </div>
+                <div class="bg-div" >
+                    <div  class="p-lg-2 position-relative BismillahRow">
+                    </div>
+
+                    <div id="StartVerseFinal" class="position-relative container" >
+                    </div>
+                </div>
+            </div>
+            <button id="ArrowBtnRight" class="arrow-btn right"><i class="fa fa-right-long"></i></button>
+        </div>
+
+
+
+
+
+    <!-- <div class="row" id="SuratDiv" style="direction:rtl;display:flex;justify-content:center;">
+        <button id="ArrowBtnLeft" class="arrow-btn left"><i class="fa fa-left-long"></i> </button>
+        <div style="background-color: #F3F9F9; border: solid 10px #66589F; width: 60%; height: 100%; border-radius: 20px; padding: 20px;" class="row g-2 col-lg-8 col-md-10 col-12 justify-content-center">
+            <div class="row">
+                <div class="col-md-11">
+                    <select class="form-select" id="Surahs">
+                    </select>
+                </div><div class="col-md-1">
+                    <i style="display: flex; justify-content: center; padding: 5px;" class="fa fa-book-open iMasjed_Action_icons"></i>
+                </div>
+            </div>
+            <div class="" style="height: 100%; ">
+                <div id="StartVerse" class="p-lg-2 position-relative">
+                </div>
+                <div id="StartVerseFinal" class="position-relative container" style=" display: flex; flex-wrap: wrap; column-gap: 10px; padding: 0 10px; ">
+                </div>
+            </div>
+        </div>
+        <button id="ArrowBtnRight" class="arrow-btn right"><i class="fa fa-right-long"></i></button>
+    </div> -->
+    <!-- <div class="row" id="SuratDiv" style="direction:rtl;display:flex;justify-content:center;">
+            <div class="main" style="position:relative;">
+                <div class="container">
+                    <img style="width:100%;" src="border.png" />
+                </div>
+                <div id="StartVerseFinal">
+
+                </div>
+            </div>
+        </div> -->
+</body>
+
+
+
+<!-- @*url: "https://api.quran.com/api/v4/verses/by_juz/:juz_number",*@ -->
+
+
+<script>
+
+    $(document).ready(function () {
+      
+            ShowSurat();
+            $("#ArrowBtnLeft").click(function () {
+                var CurrentPage = parseInt('247');
+                CurrentPage++;
+                window.location.href = '/Quran/ShowSurat?Number=' + CurrentPage;
+            });
+
+            $("#ArrowBtnRight").click(function () {
+                var CurrentPage = parseInt('247');
+                CurrentPage--;
+                window.location.href = '/Quran/ShowSurat?Number=' + CurrentPage;
+            });
+            PopulateSurats();
+
+        // ShowJuz();
+        var PageNumber = convertToArabicNumerals('212');
+        $("#PageNumber").text(PageNumber);
+
+    });
+
+
+
+
+
+    function ShowSurat() {
+            var page = '247';
+            var apiUrl = "https://imasjid.zahidaz.com/api/al-quran?page=" + page;
+
+            $.ajax({
+                url: apiUrl,
+                type: "GET",
+                success: function (response) {
+
+
+                    var FirstIteration = false;
+                    var surahname = "";
+                    response.forEach(function (verse) {
+
+                        var juz = parseInt(verse.juz);
+
+
+                        $('#AllJuz option').each(function () {
+                            var option = $(this);
+                            var dataId = parseInt(option.attr('data-id'));
+
+                            // Check if the data-id of the option matches the juz variable
+                            if (dataId === juz) {
+                                var arabicName = option.attr('data-arabicName');
+                                var number = option.val();
+                                var Para = $("#ParaNameandNumber");
+                                Para.text(arabicName + " " + number);
+                                return false;
+                            }
+                        });
+
+
+                        if (surahname != verse.surah && parseInt(verse.ayah)  == 1) {
+
+                            var bismillahRow = $(' <div class="position-relative BismillahRow"></div>');
+                            var mainSpan = $('<span style="font-size: 40px; z-index: 99999;"></span>');
+                            var verseDiv = $('<div></div>');
+                            var verseSpan = $('<span class="text-center bg-dark text-white bismillahtext"></span>').text("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ");
+                            verseDiv.append(verseSpan);
+                            mainSpan.append(verseDiv);
+                            bismillahRow.append(mainSpan);
+                            $('#StartVerseFinal').append(bismillahRow);
+                        }
+                        surahname = verse.surah;
+
+
+
+                        if (verse.verse != "﻿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ") {
+                            var words = verse.verse.split(" ");
+                            var ayah = parseInt(verse.ayah);
+                            var finalayah = convertToArabicNumerals(ayah);
+                            //var final = numericToArabic(ayah);
+                            // Creating a new span element for each word
+                            words.forEach(function (word) {
+                                var span = $('<span class="verse"></span>').text(word + " ");
+                                $('#StartVerseFinal').append(span);
+                            });
+                            //var verse = $('<span class="verse" style="font-size:40px;"></span>').text(verse.verse);
+                            //$('#StartVerseFinal').append(verse);
+
+                            var shashm = $("<span  class='waqf p-1 px-2 ms-3 me-1 border border-primary fw-bold shashm'>" + finalayah + "</span>");
+                            $('#StartVerseFinal').append(shashm);
+                            FirstIteration = true
+                        }
+
+                        //    count = incrementArabicNumeral(count);
+                    });
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+
+        }
+
+    function PopulateSurats() {
+
+        $.ajax({
+            url: 'https://imasjid.zahidaz.com/api/al-quran/surahs',
+            type: 'GET',
+            success: function (response) {
+                // Populate data into the select dropdown
+                var surahs = response;
+                var select = $('#Surahs');
+                var Checking = ''
+                if ('@Model.ByJuz' == "Yes") {
+                    Checking = '@Model.Juz';
+                } else {
+                    Checking = '247';
+                }
+                $.each(surahs, function (index, surah) {
+
+                    var option = $('<option data-page=' + surah.page + '></option>').attr('value', surah.id).text(surah.name);
+                    if (index < surahs.length - 1 && parseInt(Checking) >= surah.page && parseInt(Checking) < surahs[index + 1].page) {
+                        option.attr('selected', 'selected');
+                        $("#SurahNameAndNumber").text(surah.name + " " + convertToArabicNumerals(surah.surah));
+                    }
+                    else if (surah.page == Checking) {
+                        var data = $("#SurahNameAndNumber").text().trim();
+
+                        if (data == "") {
+                            option.attr('selected', 'selected');
+                            $("#SurahNameAndNumber").text(surah.name + " " + convertToArabicNumerals(surah.surah));
+                        }
+
+                    }
+                    select.append(option);
+                });
+                // ShowJuz();
+
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching surahs:', error);
+            }
+        });
+    }
+    $("#Surahs").on("change", function () {
+        var selectedOption = $(this).find('option:selected');
+        var page = selectedOption.data('page');
+        window.location.href = '/Quran/ShowSurat?Number=' + page;
+    });
+
+// function ShowJuz() {
+//     $.ajax({
+//         url: "@Url.Action("AllJuzs", "Home")",
+//         dataType: "json",
+//         success: function (data) {
+//             var Count = 1;
+//             data.Juzs.forEach(function (para) {
+//                 var htmlContent = '<option data-arabicName="' + para.ArabicName + '" data-endPage="' + para.EndPage + '"  data-page="' + para.StartPage + '" data-id="' + Count + '" value="' + para.Number + '">' + para.Name + '</option>';
+//                 $('#AllJuz').append(htmlContent);
+//                 Count++;
+//                 if ('@Model.ByJuz' == "Yes") {
+//                     if (para.StartPage <= '@Model.Juz' && para.EndPage >= '@Model.Juz') {
+//                         var arabicName = para.ArabicName;
+//                         var number = para.Number;
+//                         var Para = $("#ParaNameandNumber");
+//                         if (Para.text() == "") {
+//                             Para.text(arabicName + " " + number);
+//                             return false;
+//                         }
+//                     }
+//                 } else {
+//                      if (para.StartPage <= '247' && para.EndPage >= '247') {
+//                         var arabicName = para.ArabicName;
+//                         var number = para.Number;
+//                         var Para = $("#ParaNameandNumber");
+//                         if (Para.text() == "") {
+//                             Para.text(arabicName + " " + number);
+//                             return false;
+//                         }
+//                     }
+//                 }
+//             });
+
+
+//         },
+//         error: function (jqXHR, textStatus, errorThrown) {
+//             console.error("Error fetching Juz details:", textStatus, errorThrown);
+//         }
+//     });
+// }
+
+//     function ShowByJuz() {
+
+//         var page = '@Model.Juz';
+
+
+//         $("#JuzSelectedPage").val(page);
+//         var newUrl = "https://imasjid.zahidaz.com/api/al-quran?page=" + page;
+//         $.ajax({
+//             url: newUrl,
+//             method: 'GET',
+//             dataType: 'json',
+//             success: function (response) {
+//                 var surahname = "";
+//                 response.forEach(function (verse) {
+
+//                     $("#SuratID").val(verse.surah);
+
+//                     //var juz = parseInt(verse.juz);
+
+//                     //$('#AllJuz option').each(function () {
+//                     //    var option = $(this);
+//                     //    var dataId = parseInt(option.attr('data-id'));
+//                     //    debugger
+
+//                     //    // Check if the data-id of the option matches the juz variable
+//                     //    if (dataId === juz) {
+//                     //        var arabicName = option.attr('data-arabicName');
+//                     //        var number = option.val();
+//                     //        var Para = $("#ParaNameandNumber");
+//                     //        debugger
+//                     //        Para.text(arabicName + " " + number);
+//                     //        return false;
+//                     //    }
+//                     //});
+//                     if (surahname != verse.surah && parseInt(verse.ayah) == 1) {
+//                         var bismillahRow = $(' <div class="position-relative BismillahRow"></div>');
+//                         var mainSpan = $('<span style="font-size: 40px; z-index: 99999;"></span>');
+//                         var verseDiv = $('<div></div>');
+//                         var verseSpan = $('<span class="text-center bg-dark text-white bismillahtext"></span>').text("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ");
+//                         verseDiv.append(verseSpan);
+//                         mainSpan.append(verseDiv);
+//                         bismillahRow.append(mainSpan);
+//                         $('#StartVerseFinal').append(bismillahRow);
+//                     }
+//                     surahname = verse.surah;
+//                     if (verse.verse != "﻿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ") {
+//                         var words = verse.verse.split(" ");
+//                         var ayah = parseInt(verse.ayah);
+//                         var finalayah = convertToArabicNumerals(ayah);
+//                         words.forEach(function (word) {
+//                             var span = $('<span class="verse"></span>').text(word + " ");
+//                             $('#StartVerseFinal').append(span);
+//                         });
+//                         var shashm = $("<span  class='p-1 px-2 ms-3 me-1 border border-primary fw-bold shashm'>" + finalayah + "</span>");
+//                         $('#StartVerseFinal').append(shashm);
+//                     }
+//                 });
+
+//                 $("#PageNumber").text(convertToArabicNumerals($("#JuzSelectedPage").val()));
+
+//                 PopulateSurats();
+
+//             },
+//             error: function (xhr, status, error) {
+//                 console.error('Error:', error);
+//             }
+//         });
+
+
+//     }
+
+    function convertToArabicNumerals(number) {
+        // Define arrays for Arabic numerals and Western numerals
+        var arabicNumerals = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+        var westernNumerals = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+        // Convert the number to a string
+        var numberString = number.toString();
+
+        // Initialize an empty string to store the result
+        var result = "";
+
+        // Iterate through each digit of the number
+        for (var i = 0; i < numberString.length; i++) {
+            // Find the index of the digit in the westernNumerals array
+            var index = westernNumerals.indexOf(numberString[i]);
+
+            // If the digit is found, replace it with its Arabic numeral equivalent
+            // Otherwise, keep it unchanged
+            if (index !== -1) {
+                result += arabicNumerals[index];
+            } else {
+                result += numberString[i];
+            }
+        }
+
+        // Return the final result
+        return result;
+    }
+
+
+
+</script>
+</body>
+</html>
