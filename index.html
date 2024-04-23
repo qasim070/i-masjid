@@ -523,7 +523,7 @@
                     font-size: 10px;
                 }
               }
-              @media only screen and (max-width: 300px){
+              @media only screen and (max-width: 305px){
                 .verse {
                     font-size: 10px;
                 }
@@ -552,7 +552,7 @@
                     <img style="cursor:pointer;" class="img-fluid" src="logo.png" />
                 </div>
                 <h1 style="color:orange;">Read Quran</h1>
-                <input type="hidden" value="247" />
+                <input type="hidden" value="129" />
                 <input type="hidden" id="JuzSelectedPage" />
                 <input type="hidden" id="SuratID" />
 
@@ -644,13 +644,13 @@
       
             ShowSurat();
             $("#ArrowBtnLeft").click(function () {
-                var CurrentPage = parseInt('247');
+                var CurrentPage = parseInt('129');
                 CurrentPage++;
                 window.location.href = '/Quran/ShowSurat?Number=' + CurrentPage;
             });
 
             $("#ArrowBtnRight").click(function () {
-                var CurrentPage = parseInt('247');
+                var CurrentPage = parseInt('129');
                 CurrentPage--;
                 window.location.href = '/Quran/ShowSurat?Number=' + CurrentPage;
             });
@@ -667,7 +667,7 @@
 
 
     function ShowSurat() {
-            var page = '247';
+            var page = '129';
             var apiUrl = "https://imasjid.zahidaz.com/api/al-quran?page=" + page;
 
             $.ajax({
@@ -755,7 +755,7 @@
                 if ('@Model.ByJuz' == "Yes") {
                     Checking = '@Model.Juz';
                 } else {
-                    Checking = '247';
+                    Checking = '129';
                 }
                 $.each(surahs, function (index, surah) {
 
@@ -810,7 +810,7 @@
 //                         }
 //                     }
 //                 } else {
-//                      if (para.StartPage <= '247' && para.EndPage >= '247') {
+//                      if (para.StartPage <= '129' && para.EndPage >= '129') {
 //                         var arabicName = para.ArabicName;
 //                         var number = para.Number;
 //                         var Para = $("#ParaNameandNumber");
