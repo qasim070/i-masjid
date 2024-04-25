@@ -1079,7 +1079,8 @@
 
 
 
-        <div class="row" style="justify-content:space-between;align-items:center;padding:0px 50px;">
+       <div class="conatiner">
+        <!-- <div class="row d-flex justify-content-between align-items-center" style="padding:0px 50px;">
             <img src="IMasjedContent/Images/logo.png" style="width:15%" class="img-fluid" />
             <div id="WhiteCardBoxes" style="width:50%;justify-content:space-evenly; display:flex;">
 
@@ -1088,8 +1089,8 @@
                     <h1 class="text-center" style="font-family: Open Sans, sans-serif !important" id="NowTime"></h1>
                 </div>
 
-                <div class="row CurrentDateCard" id="" style="background-color:white;display:flex;justify-content:center;">
-                    <h1 class="text-center" style="font-family: Open Sans, sans-serif !important" id="NowDate">24 April 2024</h1>
+                <div class="row CurrentDateCard bg-white d-flex justify-content-center" id="" >
+                    <h1 class="text-center" style="font-family: Open Sans, sans-serif !important" id="NowDate">25 April 2024</h1>
                 </div>
 
                 <div class="row CurrentHijirDateCardBtn" id="" style="cursor:pointer; background-color:white;display:flex;justify-content:center;width:auto;">
@@ -1113,7 +1114,51 @@
                     </div>
              
             </div>
+        </div> -->
+
+        <div class="row px-5 py-4">
+            <div class="col-lg-3 col-md-3">
+                <img src="IMasjedContent/Images/logo.png" style="width:60%" class="img-fluid" />
+            </div>
+           <div class="col-lg-6 col-md-6">
+            <div id="WhiteCardBoxes" class="d-flex justify-content-between">
+
+
+                <div style="width:auto;" class="row bg-white d-flex justify-content-center align-items-center" id="TimeCard">
+                    <h1 class="text-center" style="font-family: Open Sans, sans-serif !important" id="NowTime"></h1>
+                </div>
+
+                <div class="row CurrentDateCard bg-white d-flex justify-content-center" id="" >
+                    <h1 class="text-center" style="font-family: Open Sans, sans-serif !important" id="NowDate">25 April 2024</h1>
+                </div>
+
+                <div class="row CurrentHijirDateCardBtn" id="" style="cursor:pointer; background-color:white;display:flex;justify-content:center;width:auto;">
+                    <h1 style="font-family: Open Sans, sans-serif !important" class="text-center NowDateHijri"></h1>
+                </div>
+
+
+            </div>
+           </div>
+            <div class="col-lg-1 col-md-1">
+                <img class="img-fluid" src="IMasjedContent/kaaba.png" />
+            </div>
+            <div  class="col-lg-2 col-md-2">
+              
+                    <div class="dropdown my-3  col-md-12">
+                        <button class="dropdown-btn threeDButton btn btn-round btn-warning" onclick="toggleDropdown()">LOGIN <i class="fa fa-angle-down"></i></button>
+                        <div class="dropdown-content col-md-12 dropdownContent" id="">
+                            <a style="margin-top:5px;border-radius:5px;" class="dropdown-item text-center threeDButton btn btn-round btn-warning">Student Login</a>
+                            <a  style="border-radius:5px;" class="dropdown-item text-center threeDButton btn btn-round btn-warning">Admin Login</a>
+                            <a href="#" style="border-radius:5px;" class="dropdown-item text-center threeDButton btn btn-round btn-warning">Community Login</a>
+                        </div>
+                    </div>
+             
+            </div>
         </div>
+
+
+
+       </div>
 
         <div class="row">
             <div class="col-md-5">
