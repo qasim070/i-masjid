@@ -477,7 +477,7 @@
         opacity: 0;
       }
   
-      .container {
+      /* .container {
         width: 98%;
         user-select: none;
         overflow: hidden;
@@ -487,7 +487,7 @@
         aspect-ratio: 16 / 9;
         position: relative;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
+      } */
   
       .container.fullscreen {
         max-width: 100%;
@@ -791,7 +791,6 @@
         box-shadow: #eee 3px 5px 10px;
       }
   
-      .container,
       .video-controls,
       .video-timer,
       .options {
@@ -858,6 +857,12 @@
       #HijriThings {
         display: block;
       }
+      .PrayerTiminingsDropdownContent{
+        position: absolute;
+        bottom: 22%;
+        width: 65%;
+        right: 22px;
+      }
       /* Media query for mobile view */
       @media only screen and (max-width: 767px) {
         #PCContainerFluid {
@@ -898,9 +903,7 @@
         #MainHijriCalendar {
           transform: scale(0.7);
         }
-        .time-btns{
-            width: 30%;
-        }
+        
         .time-btns h1{
             font-size: 14px;
         }
@@ -922,7 +925,13 @@
           width: 85% !important;
         }
         .circular-button{
-            height: 50px;
+            height: 45px;
+        }
+      }
+      @media only screen and (max-width: 440px) {
+        .circular-button{
+            height: 35px;
+            width: 35px;
         }
       }
     </style>
@@ -1920,129 +1929,128 @@
     </div>
   
     <div id="MobContainerFluid" class="container-fluid">
+     <div class="container pt-4">
       <div
-        class="row"
-        style="
-          padding-left: 45px;
-          padding-right: 40px;
-          padding-top: 30px;
-          align-items: center;
-        "
-      >
-        <div class="col-6">
-          <img
-            src="IMasjedContent/Images/logo.png"
-            style="width: 90%"
-            class="img-fluid"
-          />
-        </div>
-        <div class="col-6">
-          <div style="width: 70%" class="dropdown my-3 col-md-12">
-            <button
-              class="dropdown-btn threeDButton btn btn-round btn-warning"
-              onclick="toggleDropdown()"
-            >
-              LOGIN <i class="fa fa-angle-down"></i>
-            </button>
-            <div class="dropdown-content col-md-12 dropdownContent" id="">
-              <a
-                style="margin-top: 5px; border-radius: 5px"
-                class="dropdown-item text-center threeDButton btn btn-round btn-warning"
-                >Student Login</a
-              >
-              <a
-                style="border-radius: 5px"
-                class="dropdown-item text-center threeDButton btn btn-round btn-warning"
-                >Admin Login</a
-              >
-              <a
-                href="#"
-                style="border-radius: 5px"
-                class="dropdown-item text-center threeDButton btn btn-round btn-warning"
-                >Community Login</a
-              >
-            </div>
-          </div>
-        </div>
+      class="row"
+      style="
+        align-items: center;
+      "
+    >
+      <div class="col-6">
+        <img
+          src="IMasjedContent/Images/logo.png"
+          style="width: 90%"
+          class="img-fluid"
+        />
       </div>
-  
-      <div class="row" style="z-index: 99; margin-bottom: 10px">
-        <div
-          class="d-flex"
-          style="
-            justify-content: flex-start;
-            align-items: end;
-            padding-left: 50px;
-          "
-        >
-          <img
-            style="width: 50px"
-            src="https://cdn.weatherapi.com/weather/64x64/night/113.png"
-            class="img-fluid weatherIcon"
-          />
-          <h6
-            class="WeatherNOW"
-            style="
-              color: white;
-              font-family: Source Sans Pro !important;
-              word-spacing: 0.2em;
-            "
-          ></h6>
-          <h6
-            style="color: white; margin-left: 10px"
-            class="CurrentLocation"
-          ></h6>
-        </div>
-      </div>
-      <div class="row" style="z-index: 99; margin-bottom: 10px">
-        <div
-          id="WhiteCardBoxes"
-          style="
-            justify-content: space-evenly;
-            display: flex;
-            align-items: center;
-          "
-        >
-          <div
-            class="row time-btns bg-white d-flex justify-content-center align-items-center"
-            id="TimeCard"
+      <div class="col-6">
+        <div style="width: 70%" class="dropdown my-3 col-md-12">
+          <button
+            class="dropdown-btn threeDButton btn btn-round btn-warning"
+            onclick="toggleDropdown()"
           >
-            <h1
-              style="margin-bottom: 0px; font-size: small"
-              class="text-center"
-              id="NowTime"
+            LOGIN <i class="fa fa-angle-down"></i>
+          </button>
+          <div class="dropdown-content col-md-12 dropdownContent" id="">
+            <a
+              style="margin-top: 5px; border-radius: 5px"
+              class="dropdown-item text-center threeDButton btn btn-round btn-warning"
+              >Student Login</a
             >
-              7 : 21 : 33
-            </h1>
+            <a
+              style="border-radius: 5px"
+              class="dropdown-item text-center threeDButton btn btn-round btn-warning"
+              >Admin Login</a
+            >
+            <a
+              href="#"
+              style="border-radius: 5px"
+              class="dropdown-item text-center threeDButton btn btn-round btn-warning"
+              >Community Login</a
+            >
           </div>
+        </div>
+      </div>
+    </div>
+     </div>
   
-          <div
-            class="row time-btns CurrentDateCard bg-white d-flex justify-content-center align-items-center"
+     <div class="container" >
+       <div class="row" style="z-index: 99; margin-bottom: 10px">
+         <div
+           class="d-flex"
+           style="
+             justify-content: flex-start;
+             align-items: center;
+           "
+         >
+           <img
+             style="width: 50px"
+             src="https://cdn.weatherapi.com/weather/64x64/night/113.png"
+             class="img-fluid weatherIcon"
+           />
+           <h6
+             class="WeatherNOW"
+             style="
+               color: white;
+               font-family: Source Sans Pro !important;
+               word-spacing: 0.2em;
+             "
+           ></h6>
+           <h6
+             style="color: white; margin-left: 10px"
+             class="CurrentLocation"
+           ></h6>
+         </div>
+       </div>
+     </div>
+
+     <div class="container" style="width: 95%;">
+       <div class="row justify-content-between" style="z-index: 99; margin-bottom: 10px">
+         <div
+           id="WhiteCardBoxes"
+           class="d-flex justify-content-between align-items-center"
+         >
+           <div
+             class="row time-btns bg-white d-flex justify-content-center align-items-center"
+             id="TimeCard"
+           >
+             <h1
+               style="margin-bottom: 0px; font-size: small"
+               class="text-center"
+               id="NowTime"
+             >
+               7 : 21 : 33
+             </h1>
+           </div>
+   
+           <div
+             class="row time-btns CurrentDateCard bg-white d-flex justify-content-center align-items-center"
+             
+           >
+             <h1
+               style="margin-bottom: 0px; font-size: small"
+               class="text-center"
+               id="NowDate"
+             >
+               26 April 2024
+             </h1>
+           </div>
+   
+           <div
+             class="row time-btns CurrentHijirDateCardBtn bg-white d-flex justify-content-center align-items-center"
+             id=""
             
-          >
-            <h1
-              style="margin-bottom: 0px; font-size: small"
-              class="text-center"
-              id="NowDate"
-            >
-              26 April 2024
-            </h1>
-          </div>
-  
-          <div
-            class="row time-btns CurrentHijirDateCardBtn bg-white d-flex justify-content-center align-items-center"
-            id=""
-           
-          >
-            <h1
-              style="margin-bottom: 0px; font-size: small"
-              class="text-center  NowDateHijri"
-            >
-              Shawwal 15,1445
-            </h1>
-          </div>
-        </div>
-      </div>
+           >
+             <h1
+               style="margin-bottom: 0px; font-size: small"
+               class="text-center  NowDateHijri"
+             >
+               Shawwal 15,1445
+             </h1>
+           </div>
+         </div>
+       </div>
+     </div>
   
       <div class="container-fluid">
         <div
@@ -2096,285 +2104,297 @@
         />
       </div>
       </div>
-      <div
-      class="row"
-      style="
-        align-items: center;
-        margin: auto;
-        justify-content: flex-start;
-        margin-bottom: 20px;
-        margin-top: 52%;
-      "
-    >
-      <button id="" class="circular-button PlayAdhaanBtn">
-        <i
-          class="fa fa-volume-high"
-          style="color: orange; font-size: medium"
-        ></i>
-      </button>
-      <div
-        class="PlaylistButton"
-        style="margin-left: 10px; font-size: small; width: auto"
-      >
-        <i style="color: red" class="fa fa-play"></i>
-      </div>
-      <div class="emptyDiv">
-        <div
-          id="FajrItem"
-          class="dropdownitem"
-          style="
-            background: url('IMasjedContent/AdhanImages/Fajr.png');
-            background-position: bottom;
-            background-size: cover;
-          "
-        >
-          <img
-            class="namazGuyIcon"
-            src="IMasjedContent/AdhanImages/namazicon.png"
-          />
-          <h6 style="margin-bottom: 0px" class="FajrTime" id="FajarTime">
-            Fajr: 5:00am
-          </h6>
-          <i
-            style="color: white; cursor: pointer"
-            id="arrowDownIcon"
-            class="fa fa-angle-down"
-          ></i>
-        </div>
-      </div>
-      <div
-        id=""
-        class="dropdown-content PrayerTiminingsDropdownContent"
+      <div class="container">
+          <div
+        class="row align-items-center justify-content-between "
         style="
-          margin-left: 110px;
-          display: none;
-          width: 36%;
-          padding-left: 0px;
-          padding-right: 0px;
-          background-color: rgba(
-            123,
-            107,
-            166,
-            0.8
-          ) !important; /* Background color with opacity */
-        "
-      >
-        <div
-          id="FajrItem"
-          class="dropdownitem"
-          style="
-            margin-bottom: 5px !important;
-            background: url('IMasjedContent/AdhanImages/fajr.png');
-            background-position: bottom;
-            background-size: cover;
-          "
-        >
-          <img
-            class="namazGuyIcon"
-            src="IMasjedContent/AdhanImages/namazicon.png"
-          />
-          <h6 style="margin-bottom: 0px" class="FajrTime" id="FajarTime"></h6>
-          <i style="color: white" class="fa fa-angle-down"></i>
-        </div>
-        <div
-          id="ShurookItem"
-          class="dropdownitem"
-          style="
-            margin-bottom: 5px !important;
-            background: url('IMasjedContent/AdhanImages/shurook.png');
-            background-position: bottom;
-            background-size: cover;
-          "
-        >
-          <img
-            class="namazGuyIcon"
-            src="IMasjedContent/AdhanImages/namazicon.png"
-          />
-          <h6 style="margin-bottom: 0px" class="ShurookTime"></h6>
-          <i style="color: white" class="fa fa-angle-down"></i>
-        </div>
-        <div
-          id="DhuhrItem"
-          class="dropdownitem"
-          style="
-            margin-bottom: 5px !important;
-            background: url('IMasjedContent/AdhanImages/dhuhr.png');
-            background-position: bottom;
-            background-size: cover;
-          "
-        >
-          <img
-            class="namazGuyIcon"
-            src="IMasjedContent/AdhanImages/namazicon.png"
-          />
-          <h6 style="margin-bottom: 0px" class="ZoharTime">Duhar: 1:00pm</h6>
-          <i style="color: white" class="fa fa-angle-down"></i>
-        </div>
-        <div
-          id="AsrItem"
-          class="dropdownitem"
-          style="
-            margin-bottom: 5px !important;
-            background: url('IMasjedContent/AdhanImages/asr.png');
-            background-position: bottom;
-            background-size: cover;
-          "
-        >
-          <img
-            class="namazGuyIcon"
-            src="IMasjedContent/AdhanImages/namazicon.png"
-          />
-          <h6 style="margin-bottom: 0px" class="AsarTime">Asar: 5:30pm</h6>
-          <i style="color: white" class="fa fa-angle-down"></i>
-        </div>
-        <div
-          id="MaghribItem"
-          class="dropdownitem"
-          style="
-            margin-bottom: 5px !important;
-            background: url('IMasjedContent/AdhanImages/maghrib.png');
-            background-position: bottom;
-            background-size: cover;
-          "
-        >
-          <img
-            class="namazGuyIcon"
-            src="IMasjedContent/AdhanImages/namazicon.png"
-          />
-          <h6 style="margin-bottom: 0px" class="MagribTime">Magrib: 7:00pm</h6>
-          <i style="color: white" class="fa fa-angle-down"></i>
-        </div>
-        <div
-          id="IshaItem"
-          class="dropdownitem"
-          style="
-            margin-bottom: 5px !important;
-            background: url('IMasjedContent/AdhanImages/isha.png');
-            background-position: bottom;
-            background-size: cover;
-          "
-        >
-          <img
-            class="namazGuyIcon"
-            src="IMasjedContent/AdhanImages/namazicon.png"
-          />
-          <h6 style="margin-bottom: 0px" class="EshaTime">Esha: 9:30pm</h6>
-          <i style="color: white" class="fa fa-angle-down"></i>
-        </div>
-      </div>
-    </div>
-      <div class="row" >
-        <div
-          id="carouselExampleControls"
-          class="carousel slide custom-slider carouselExampleControls h-auto"
-          style="margin-bottom: 10px"
-          data-ride="carousel"
-          data-interval="3000"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="banner.jpg"
-                style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-  
-            <div class="carousel-item">
-              <img
-                src="banner2.jpg"
-                style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <!-- same here                         -->
-          </div>
-          <a
-            class="carousel-control-prev"
-            href=".carouselExampleControls"
-            role="button"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <img
-            style="position: absolute; top: -20%; left: 85%; height: 60px"
-            src="IMasjedContent/AdhanImages/butterfly.gif"
-          />
-          <a
-            class="carousel-control-next"
-            href=".carouselExampleControls"
-            role="button"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-        <div
-          id="carouselExampleControls2"
-          style="margin-bottom: 10px"
-          class="carousel slide custom-slider2 carouselExampleControls2"
-          data-ride="carousel"
-          data-interval="3000"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="banner.jpg"
-                style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-  
-            <div class="carousel-item">
-              <img
-                src="banner2.jpg"
-                style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-          </div>
-          <a
-            style="height: auto"
-            class="carousel-control-prev"
-            href=".carouselExampleControls2"
-            role="button"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            style="height: auto"
-            class="carousel-control-next"
-            href=".carouselExampleControls2"
-            role="button"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-  
-
-  
-      <div
-        class="row d-flex"
-        style="
-          align-items: center;
           margin: auto;
-          justify-content: center;
-          margin: 20px 30px;
+          margin-bottom: 20px;
+          margin-top: 40%;
         "
       >
-        <div class="dropdown col-4">
+        <button id="" class="circular-button PlayAdhaanBtn">
+          <i
+            class="fa fa-volume-high"
+            style="color: orange; font-size: medium"
+          ></i>
+        </button>
+        <div
+          class="PlaylistButton"
+          style="margin-left: 10px; font-size: small; width: auto"
+        >
+          <i style="color: red" class="fa fa-play"></i>
+        </div>
+        <div class="emptyDiv">
+          <div
+            id="FajrItem"
+            class="dropdownitem"
+            style="
+              background: url('IMasjedContent/AdhanImages/Fajr.png');
+              background-position: bottom;
+              background-size: cover;
+            "
+          >
+            <img
+              class="namazGuyIcon"
+              src="IMasjedContent/AdhanImages/namazicon.png"
+            />
+            <h6 style="margin-bottom: 0px" class="FajrTime" id="FajarTime">
+              Fajr: 5:00am
+            </h6>
+            <i
+              style="color: white; cursor: pointer"
+              id="arrowDownIcon"
+              class="fa fa-angle-down"
+            ></i>
+          </div>
+        </div>
+        <div
+          id=""
+          class="dropdown-content PrayerTiminingsDropdownContent"
+          
+        >
+          <div
+            id="FajrItem"
+            class="dropdownitem"
+            style="
+              margin-bottom: 5px !important;
+              background: url('IMasjedContent/AdhanImages/fajr.png');
+              background-position: bottom;
+              background-size: cover;
+            "
+          >
+            <img
+              class="namazGuyIcon"
+              src="IMasjedContent/AdhanImages/namazicon.png"
+            />
+            <h6 style="margin-bottom: 0px" class="FajrTime" id="FajarTime"></h6>
+            <i style="color: white" class="fa fa-angle-down"></i>
+          </div>
+          <div
+            id="ShurookItem"
+            class="dropdownitem"
+            style="
+              margin-bottom: 5px !important;
+              background: url('IMasjedContent/AdhanImages/shurook.png');
+              background-position: bottom;
+              background-size: cover;
+            "
+          >
+            <img
+              class="namazGuyIcon"
+              src="IMasjedContent/AdhanImages/namazicon.png"
+            />
+            <h6 style="margin-bottom: 0px" class="ShurookTime"></h6>
+            <i style="color: white" class="fa fa-angle-down"></i>
+          </div>
+          <div
+            id="DhuhrItem"
+            class="dropdownitem"
+            style="
+              margin-bottom: 5px !important;
+              background: url('IMasjedContent/AdhanImages/dhuhr.png');
+              background-position: bottom;
+              background-size: cover;
+            "
+          >
+            <img
+              class="namazGuyIcon"
+              src="IMasjedContent/AdhanImages/namazicon.png"
+            />
+            <h6 style="margin-bottom: 0px" class="ZoharTime">Duhar: 1:00pm</h6>
+            <i style="color: white" class="fa fa-angle-down"></i>
+          </div>
+          <div
+            id="AsrItem"
+            class="dropdownitem"
+            style="
+              margin-bottom: 5px !important;
+              background: url('IMasjedContent/AdhanImages/asr.png');
+              background-position: bottom;
+              background-size: cover;
+            "
+          >
+            <img
+              class="namazGuyIcon"
+              src="IMasjedContent/AdhanImages/namazicon.png"
+            />
+            <h6 style="margin-bottom: 0px" class="AsarTime">Asar: 5:30pm</h6>
+            <i style="color: white" class="fa fa-angle-down"></i>
+          </div>
+          <div
+            id="MaghribItem"
+            class="dropdownitem"
+            style="
+              margin-bottom: 5px !important;
+              background: url('IMasjedContent/AdhanImages/maghrib.png');
+              background-position: bottom;
+              background-size: cover;
+            "
+          >
+            <img
+              class="namazGuyIcon"
+              src="IMasjedContent/AdhanImages/namazicon.png"
+            />
+            <h6 style="margin-bottom: 0px" class="MagribTime">Magrib: 7:00pm</h6>
+            <i style="color: white" class="fa fa-angle-down"></i>
+          </div>
+          <div
+            id="IshaItem"
+            class="dropdownitem"
+            style="
+              margin-bottom: 5px !important;
+              background: url('IMasjedContent/AdhanImages/isha.png');
+              background-position: bottom;
+              background-size: cover;
+            "
+          >
+            <img
+              class="namazGuyIcon"
+              src="IMasjedContent/AdhanImages/namazicon.png"
+            />
+            <h6 style="margin-bottom: 0px" class="EshaTime">Esha: 9:30pm</h6>
+            <i style="color: white" class="fa fa-angle-down"></i>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="container">
+        <div class="row" >
+          <div
+            id="carouselExampleControls"
+            class="carousel slide custom-slider carouselExampleControls h-auto"
+            style="margin-bottom: 10px"
+            data-ride="carousel"
+            data-interval="3000"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="banner.jpg"
+                  style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+    
+              <div class="carousel-item">
+                <img
+                  src="banner2.jpg"
+                  style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <!-- same here                         -->
+            </div>
+            <a
+              class="carousel-control-prev"
+              href=".carouselExampleControls"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <img
+              style="position: absolute; top: -20%; left: 85%; height: 60px"
+              src="IMasjedContent/AdhanImages/butterfly.gif"
+            />
+            <a
+              class="carousel-control-next"
+              href=".carouselExampleControls"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div
+            id="carouselExampleControls2"
+            style="margin-bottom: 10px"
+            class="carousel slide custom-slider2 carouselExampleControls2"
+            data-ride="carousel"
+            data-interval="3000"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="banner.jpg"
+                  style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+    
+              <div class="carousel-item">
+                <img
+                  src="banner2.jpg"
+                  style="border-radius: 20px; padding-left: 0px; padding-right: 0px"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+            <a
+              style="height: auto"
+              class="carousel-control-prev"
+              href=".carouselExampleControls2"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              style="height: auto"
+              class="carousel-control-next"
+              href=".carouselExampleControls2"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <style>
+        @media only screen and (max-width: 425px){
+          .btm-btns-i{
+            width: 25px;
+            height: 25px;
+          }
+          body{
+            background-position: center bottom;
+          }
+         
+        }
+        @media only screen and (max-width: 370px){
+          div#WhiteCardBoxes {
+            flex-direction: column;
+          }
+          .time-btns{
+            width: 100%;
+              margin-bottom: 10px;
+          }
+          .btm-btns-main{
+            flex-direction: column;
+          }
+          .btm-btns {
+              width: 100%;
+              margin-bottom: 10px;
+          }
+        }
+      </style>
+  
+      <div class="container">
+        <div
+        class=" d-flex btm-btns-main  align-items-center justify-content-between"
+      >
+        <div class="dropdown btm-btns ">
           <div
             class="dropdown-content col-md-12"
             style="margin-top: -80px; width: 90%"
@@ -2396,10 +2416,11 @@
             class="dropdown-btn threeDButton btn btn-round btn-warning"
             onclick="toggleDropdownQuran2()"
           >
+          <img src="IMasjedContent/AdhanImages/quranIcon.svg" alt="" class="btm-btns-i" width="37" height="37">
             Holy Quran
           </button>
         </div>
-        <div class="dropdown col-4">
+        <div class="dropdown btm-btns ">
           <div
             class="dropdown-content col-md-12"
             style="margin-top: -80px; width: 90%"
@@ -2421,18 +2442,22 @@
             class="dropdown-btn threeDButton btn btn-round btn-warning"
             onclick="toggleDropdownHadith2()"
           >
+          <img src="IMasjedContent/AdhanImages/hadithIcon.svg" class="btm-btns-i" alt="" width="37" height="37">
             Hadith Sharif
           </button>
         </div>
-        <div class="col-4">
+        <div class="btm-btns">
           <button
             style="font-size: small"
             id="KeepNotesBtn"
             class="dropdown-btn threeDButton btn btn-round btn-warning"
           >
+          <img src="IMasjedContent/AdhanImages/keepnoteicon.png" class="btm-btns-i"  alt="" width="37" height="37">
+
             Keep Notes
           </button>
         </div>
+      </div>
       </div>
     </div>
   </body>
