@@ -293,7 +293,7 @@
   
       #TimeCard {
         background-color: white;
-        height: 40px;
+        /* height: 40px; */
         border-radius: 5px;
         box-shadow: 0px 5px 5px 0px black;
         display: flex;
@@ -310,7 +310,7 @@
   
       .CurrentDateCard {
         background-color: white;
-        height: 40px;
+        /* height: 40px; */
         cursor: pointer;
         border-radius: 5px;
         box-shadow: 0px 5px 5px 0px black;
@@ -321,7 +321,7 @@
   
       #CurrentHijirDateCard {
         background-color: white;
-        height: 40px;
+        /* height: 40px; */
         border-radius: 5px;
         box-shadow: 0px 5px 5px 0px black;
         display: flex;
@@ -331,7 +331,7 @@
   
       .CurrentHijirDateCardBtn {
         background-color: white;
-        height: 40px;
+        /* height: 40px; */
         border-radius: 5px;
         box-shadow: 0px 5px 5px 0px black;
         display: flex;
@@ -384,20 +384,17 @@
       #NowTime {
         color: #5f4c93;
         font-family: Nunito;
-        font-size: 17px;
         letter-spacing: 2px;
       }
   
       #NowDate {
         color: #5f4c93;
         font-family: Nunito;
-        font-size: 17px;
       }
   
       .NowDateHijri {
         color: #5f4c93;
         font-family: Nunito;
-        font-size: 17px;
       }
   
       .onlyMonth {
@@ -863,7 +860,36 @@
         width: 65%;
         right: 22px;
       }
+      .btn-text{
+        font-size: 18px;
+      }
+     
+      #PCContainerFluid {
+          height: 95%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+      .moon-div{
+        position: fixed; 
+        right: -10%; 
+        bottom: -5%; 
+        display: flex;
+        width: 45%;
+      }
       /* Media query for mobile view */
+      @media only screen and (max-width: 1500px) {
+        .moon-div{width: 55%;}
+      }
+      @media only screen and (max-width: 1280px) {
+        .moon-div{width: 60%;}
+        .btn-text {font-size: 14px;}
+      }
+      @media only screen and (max-width: 998px) {
+        /* .moon-div{width: 60%;} */
+        .btn-text {font-size: 12px;}
+        .kaaba-desktop{height: 65% !important;}
+      }
       @media only screen and (max-width: 767px) {
         #PCContainerFluid {
           display: none; /* Hide PCContainerFluid on mobile */
@@ -1338,7 +1364,7 @@
         </div>
       </div>
     </div>
-    <div id="PCContainerFluid" class="container-fluid">
+    <div id="PCContainerFluid" class="container-fluid px-5">
       <audio id="AdhanSound" src="IMasjedContent/AdhanImages/a1.mp3"></audio>
   
       <div class="fixed-btn d-none d-md-block">
@@ -1388,7 +1414,7 @@
               </div>
           </div> -->
   
-        <div class="row px-5 py-4">
+        <div class="row  py-4">
           <div class="col-lg-3 col-md-3">
             <img
               src="IMasjedContent/Images/logo.png"
@@ -1396,15 +1422,15 @@
               class="img-fluid"
             />
           </div>
-          <div class="col-lg-6 col-md-6">
-            <div id="WhiteCardBoxes" class="d-flex justify-content-between"  style="gap: 3rem;">
+          <div class="col-lg-6 col-md-6 align-items-center d-flex">
+            <div id="WhiteCardBoxes" class="d-flex justify-content-evenly align-items-center w-100" >
               <div
                 style="width: auto"
                 class="row bg-white d-flex justify-content-center align-items-center"
                 id="TimeCard"
               >
                 <h1
-                  class="text-center"
+                  class="text-center m-0 py-md-2 px-md-2 px-sm-1 py-2 px-4 btn-text"
                   style="font-family: Open Sans, sans-serif !important"
                   id="NowTime"
                 ></h1>
@@ -1415,7 +1441,7 @@
                 id=""
               >
                 <h1
-                  class="text-center"
+                  class="text-center py-md-2 px-md-2 px-sm-1 m-0 py-2 px-4 btn-text"
                   style="font-family: Open Sans, sans-serif !important"
                   id="NowDate"
                 >
@@ -1436,13 +1462,13 @@
               >
                 <h1
                   style="font-family: Open Sans, sans-serif !important"
-                  class="text-center NowDateHijri"
+                  class="text-center py-md-2 px-md-2 px-sm-1 NowDateHijri m-0 py-2 px-4 btn-text"
                 ></h1>
               </div>
             </div>
           </div>
-          <div class="col-lg-1 col-md-1">
-            <img class="img-fluid" src="IMasjedContent/kaaba.png" />
+          <div class="col-lg-1 col-md-1 d-flex align-items-center justify-content-center">
+            <img class="img-fluid h-75 kaaba-desktop" src="IMasjedContent/kaaba.png" />
           </div>
           <div class="col-lg-2 col-md-2">
             <div class="dropdown my-3 col-md-12">
@@ -1476,7 +1502,7 @@
       </div>
   
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-xl-6 col-md-8 ">
           <div class="d-flex justify-content-center align-items-start">
             <img style="width: 50px" class="img-fluid weatherIcon" />
             <h6
@@ -1681,56 +1707,56 @@
           </div>
         </div>
   
-        <div
-          style="position: fixed; right: 0; top: 100px; display: flex"
-          class="col-md-5"
-        >
-          <input
-            type="hidden"
-            id="ThirdQuarterIMG"
-            value="IMasjedContent/MoonPhases/ThirdQuarter.png"
-          />
-          <input
-            type="hidden"
-            id="WaningGibbousIMG"
-            value="IMasjedContent/MoonPhases/WanningGibbous.png"
-          />
-          <input
-            type="hidden"
-            id="FullMoonIMG"
-            value="IMasjedContent/MoonPhases/FullMoon.png"
-          />
-          <input
-            type="hidden"
-            id="WaxingGibbousIMG"
-            value="IMasjedContent/MoonPhases/WaxingGibbous.png"
-          />
-          <input
-            type="hidden"
-            id="WaxingCrescentIMG"
-            value="IMasjedContent/MoonPhases/WaxingCrescent.png"
-          />
-          <input
-            type="hidden"
-            id="FirstQuarterIMG"
-            value="IMasjedContent/MoonPhases/FirstQuarter.png"
-          />
-          <input
-            type="hidden"
-            id="NewMoonIMG"
-            value="IMasjedContent/MoonPhases/NewMoon.png"
-          />
-          <input
-            type="hidden"
-            id="WaningCrescentIMG"
-            value="IMasjedContent/MoonPhases/WaningCrescent.png"
-          />
-  
-          <img
-            style="display: block; width: 90%; float: inline-end"
-            class="img-fluid moonImage"
-          />
-        </div>
+      </div>
+      <!-- yahan ana hai wapis -->
+      <div
+        class=" moon-div"
+      >
+        <input
+          type="hidden"
+          id="ThirdQuarterIMG"
+          value="IMasjedContent/MoonPhases/ThirdQuarter.png"
+        />
+        <input
+          type="hidden"
+          id="WaningGibbousIMG"
+          value="IMasjedContent/MoonPhases/WanningGibbous.png"
+        />
+        <input
+          type="hidden"
+          id="FullMoonIMG"
+          value="IMasjedContent/MoonPhases/FullMoon.png"
+        />
+        <input
+          type="hidden"
+          id="WaxingGibbousIMG"
+          value="IMasjedContent/MoonPhases/WaxingGibbous.png"
+        />
+        <input
+          type="hidden"
+          id="WaxingCrescentIMG"
+          value="IMasjedContent/MoonPhases/WaxingCrescent.png"
+        />
+        <input
+          type="hidden"
+          id="FirstQuarterIMG"
+          value="IMasjedContent/MoonPhases/FirstQuarter.png"
+        />
+        <input
+          type="hidden"
+          id="NewMoonIMG"
+          value="IMasjedContent/MoonPhases/NewMoon.png"
+        />
+        <input
+          type="hidden"
+          id="WaningCrescentIMG"
+          value="IMasjedContent/MoonPhases/WaningCrescent.png"
+        />
+
+        <img
+          style="display: block; width: 90%; float: inline-end"
+          class="img-fluid moonImage"
+        />
       </div>
   
       <div class="row" style="margin-bottom: 10px">
@@ -2011,7 +2037,7 @@
            >
              <h1
                style="margin-bottom: 0px; font-size: small"
-               class="text-center"
+               class="text-center py-2"
                id="NowTime"
              >
                7 : 21 : 33
@@ -2024,7 +2050,7 @@
            >
              <h1
                style="margin-bottom: 0px; font-size: small"
-               class="text-center"
+               class="text-center py-2"
                id="NowDate"
              >
                26 April 2024
@@ -2038,7 +2064,7 @@
            >
              <h1
                style="margin-bottom: 0px; font-size: small"
-               class="text-center  NowDateHijri"
+               class="text-center  NowDateHijri py-2"
              >
                Shawwal 15,1445
              </h1>
