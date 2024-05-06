@@ -2499,10 +2499,14 @@
       }
       @media only screen and (max-width: 370px) {
         div#WhiteCardBoxes {
-          flex-direction: column;
+          flex-direction: row;
+          flex-wrap: nowrap;
+        }
+        .time-btns h1 {
+            font-size: 8px !important;
         }
         .time-btns {
-          width: 100%;
+          /* width: 100%; */
           margin-bottom: 10px;
         }
         .btm-btns-main {
