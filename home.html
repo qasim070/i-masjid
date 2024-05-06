@@ -1586,7 +1586,7 @@
 
     <div class="row">
       <div class="col-xl-6 col-md-8">
-        <div class="d-flex justify-content-start align-items-center">
+        <div class="d-flex weather-txt justify-content-start align-items-center">
           <img style="width: 50px" class="img-fluid weatherIcon" />
           <h6
             class="WeatherNOW mt-1"
@@ -2077,16 +2077,16 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container p-0">
       <div class="row" style="z-index: 99; margin: 10px 0">
-        <div class="d-flex text-start justify-content-start align-items-center">
+        <div class="d-flex text-start justify-content-start p-0 align-items-center">
           <img
             style="width: 50px"
             src="https://cdn.weatherapi.com/weather/64x64/night/113.png"
             class="img-fluid weatherIcon"
           />
           <h6
-            class="WeatherNOW text-start"
+            class="WeatherNOW text-start m-0"
             style="
               color: white;
               font-family: Source Sans Pro !important;
@@ -2095,7 +2095,7 @@
           ></h6>
           <h6
             style="color: white; margin-left: 10px"
-            class="CurrentLocation"
+            class="CurrentLocation mb-0"
           ></h6>
         </div>
       </div>
@@ -2482,6 +2482,19 @@
         }
         body {
           background-position: 62% top;
+        }
+        .custom-slider .carousel-item img {
+          padding: 5px;
+          object-fit: cover;
+          width: 100% !important;
+          height: auto;
+        }
+
+        .custom-slider2 .carousel-item img {
+          padding: 10px;
+          object-fit: cover;
+          height: auto;
+          width: 100% !important;
         }
       }
       @media only screen and (max-width: 370px) {
