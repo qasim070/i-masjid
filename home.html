@@ -868,6 +868,9 @@
       height: 100vh;
       width: 100%;
       overflow: hidden;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
     }
     .moon-div {
       position: absolute;
@@ -3057,7 +3060,6 @@
       hijriYearContainer.empty();
       calendarDaysContainer.empty();
       calendarDatesContainer.empty();
-      console.log(hijriDates);
       // Define Hijri days names
       var hijriDays = [
         "Sun الأحد",
