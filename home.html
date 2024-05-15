@@ -903,9 +903,10 @@
     }
     @media only screen and (max-width: 1280px) {
       .moon-div {
-        width: 100%;
+        width: 175%;
         right: -15%;
         bottom: -35%;
+        z-index: -1;
       }
       .btn-text {
         font-size: 14px;
@@ -929,10 +930,11 @@
     }
     @media only screen and (max-width: 1140px) {
       .moon-div {
-        width: 100%;
-        right: -20%;
-        bottom: -55%;
-      }
+        width: 650px;
+        right: -15%;
+        bottom: -10%;
+        z-index: -1;
+    }
       #MainCalendar{
         top:20% !important;
       }
@@ -949,10 +951,11 @@
     }
     @media only screen and (max-width: 1024px) {
       .moon-div {
-        width: 100%;
-        right: -20%;
-        bottom: 35%;
-      }
+        width: 600px;
+        right: -50%;
+        bottom: -20%;
+        z-index: -1;
+    }
     }
     @media only screen and (max-width: 998px) {
       /* .moon-div{width: 60%;} */
@@ -964,6 +967,12 @@
       }
     }
     @media only screen and (max-width: 767px) {
+      .moon-div {
+        width: 202%;
+        right: -20%;
+        bottom: 0%;
+        z-index: -1;
+    }
       .emptyDiv {
           width: 65%;
       }
@@ -978,6 +987,7 @@
 
       #MobContainerFluid {
         display: block; /* Show MobContainerFluid on mobile */
+        
       }
 
       .onlyMonth_G {
@@ -1789,7 +1799,7 @@
     <!-- yahan ana hai wapis -->
    
     <div class="row" style="margin-bottom: 10px;height: 70%;">
-      <div class="col-md-6">
+      <div class="col-xl-6 col-lg-7 col-md-9">
         <div class="row">
           <div
             id="carouselExampleControls"
@@ -1980,7 +1990,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6" style="position: relative;">
+      <div class="col-xl-6 col-lg-5 col-md-3" style="position: relative;">
         <div class="container-fluid" >
           
               <div class="moon-div">
